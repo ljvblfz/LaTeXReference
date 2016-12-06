@@ -1,0 +1,212 @@
+\documentclass[t]{beamer}
+%\documentclass[handout, t]{beamer}
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage[UTF8]{ctex}
+\usetheme{AnnArbor}
+\usefonttheme{serif}
+\useinnertheme{rounded}
+\usecolortheme{beaver}
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\usepackage{graphicx}
+ \usepackage{multicol} 
+\usepackage{mathrsfs}
+\usepackage{bm}
+\usepackage{amsmath}
+%\usepackage{amsfonts}
+
+\setmainfont{Times New Roman}
+\setCJKmainfont{Microsoft YaHei}
+
+
+\hypersetup{pdfpagemode=FullScreen}
+
+
+\setbeamercolor{block title}{bg=red!40!white}
+\setbeamercolor{block body}{bg=gray!20!white}
+
+
+%beamerugthemeAnnArbor
+
+\begin{document}
+
+\fontsize{14pt}{.9\baselineskip}\selectfont
+
+  \title{\LaTeX{}公式输入
+}
+\date{主讲：Jamesfang
+}
+\author{China\TeX{}在线培训课程}
+
+  \begin{frame}
+    \maketitle
+  \end{frame}
+
+\begin{frame}{演讲内容}
+\begin{multicols}{2}
+\tableofcontents
+\end{multicols}
+\end{frame}
+
+\section{公式基本输入}
+
+\subsection{行内、行间公式}
+\begin{frame}[fragile]{行内、行间公式}
+\begin{itemize}
+\item 行内公式：\verb"$...$"
+\item 行间公式：\verb"$$...$$" 或者 \verb"\[...\]"
+\end{itemize}
+
+The quick brown fox $\frac{-b\pm\sqrt{b^2-4ac}}{2a}$  jumps over the lazy dog.
+
+The quick brown fox $$\frac{-b\pm\sqrt{b^2-4ac}}{2a}$$  jumps over the lazy dog.
+\end{frame}
+
+\subsection{公式的编号}
+\begin{frame}[fragile]{公式的编号方法}
+\begin{itemize}
+\item 自动编号：
+\begin{verbatim}
+\begin{equation}
+...
+\end{equation}
+\end{verbatim}
+\item 标签：\verb"\tag"
+\begin{verbatim}
+\begin{equation}\tag{...}
+   eq.
+\end{equation}
+\end{verbatim}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{itemize}
+\item 以节为依据进行编号：\verb"\numberwithin{equation}{section}"
+\item 子编号：
+\begin{verbatim}
+\begin{subequations}
+\begin{equation}
+    ...        (eq. a)
+\end{equation}
+\begin{equation}
+    ...        (eq. b)
+\end{equation}
+\end{subequations}
+\end{verbatim}
+
+
+\end{itemize}
+
+\end{frame}
+
+
+
+
+\section{常见公式宏包}
+
+\subsection{常见宏包}
+\begin{frame}{常见宏包}
+\begin{itemize}
+\item \texttt{amsmath}宏包
+\item 字体宏包
+\begin{itemize}\large
+\item \texttt{mathrsfs}和\texttt{amsfonts}宏包
+\item \texttt{bm}宏包：字体加粗
+\end{itemize}
+\end{itemize}
+
+
+\end{frame}
+
+\subsection{字体宏包}
+\begin{frame}[fragile]{\texttt{mathrsfs}和\texttt{amsfonts}宏包}
+\begin{itemize}
+\item \verb"\mathscr" $$\mathscr{ABCDEFGHIJKLMNOPQRST}$$
+\item \verb"\mathcal"$$\mathcal{ABCDEFGHIJKLMNOPQRST}$$
+\item \verb"\mathbb"$$\mathbb{ABCDEFGHIJKLMNOPQRST}$$
+\item \verb"\mathfrak"$$\mathfrak{ABCDEFGHIJKLMNOPQRST}$$
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{\texttt{bm}宏包}
+可用于字体的加粗
+$$\bm{x, \; X,\; \alpha, \; \Theta};\qquad x, \; X,\; \alpha, \; \Theta$$
+$$\bm{x^2+y^2=z^2};\qquad x^2+y^2=z^2$$
+
+另一种形式的粗体：使用\verb"\mathbf"命令
+$$\mathbf{x,y}; \quad \mathbf{X,Y}$$
+\end{frame}
+
+
+\subsection{公式的环境}
+\begin{frame}{公式的环境}
+\begin{itemize}
+\item 矩阵环境：\texttt{array}, \texttt{matrix}, \texttt{Bmatrix}, \texttt{bmatrix}, \texttt{pmatrix},   \texttt{vmatrix},  \texttt{Vmatrix},
+\item 分段函数环境：\texttt{cases}
+\item 公式对齐环境：\texttt{split}, \texttt{align},  \texttt{eqnarray}, \texttt{gathered}
+\end{itemize}
+\end{frame}
+
+
+\section{定理环境}
+\subsection{定理宏包}
+\begin{frame}{定理宏包}
+\begin{itemize}
+\item \texttt{amsthm}宏包
+\item \texttt{ntheorem}宏包
+
+\end{itemize}
+\end{frame}
+
+
+
+\subsection{定理环境的设置}
+\begin{frame}[fragile]{定理环境的设置}
+\begin{verbatim}
+\newtheorem{thm}{定理}[chapter]
+\newtheorem{defn}{定义}
+\newtheorem{lemma}[thm]{引理}
+\end{verbatim}
+\end{frame}
+
+
+\subsection{定理的样式}
+\begin{frame}[fragile]{定理的样式}
+\begin{verbatim}
+\theoremstyle{plain}
+\theoremstyle{definition}
+\theoremstyle{remark}
+\end{verbatim}
+
+\end{frame}
+
+
+
+
+
+\subsection{证明环境}
+\begin{frame}[fragile]{证明环境}
+\verb"proof"环境
+
+证明结尾符号\verb"\qed, \qedhere"
+\end{frame}
+
+
+\begin{frame}
+\begin{center}\Huge
+{\color{red}谢谢观赏！}\\
+JamesFang\\
+Administrator of {\color{blue}China\TeX{}.org}
+\end{center}
+\end{frame}
+
+
+
+
+
+
+
+
+
+\end{document}
